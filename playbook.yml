@@ -1,0 +1,11 @@
+---
+- hosts: webservers
+  become: True
+  tasks:
+    - name: Copy jar file
+      copy:
+        src: /var/lib/jenkins/workspace/ansible/devops-a1/target/spring-petclinic-2.7.0-SNAPSHOT.jar
+        dest: /home/temp/target
+    - name : Run jar file
+      shell: "java -jar /home/temp/target/spring-petclinic-2.7.0-SNAPSHOT.jar &"
+...
